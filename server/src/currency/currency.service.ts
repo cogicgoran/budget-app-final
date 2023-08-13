@@ -1,11 +1,11 @@
-import { Injectable } from "@nestjs/common";
-import { CurrencyRepository } from "./currency.repository";
+import { Injectable } from '@nestjs/common';
+import { CurrencyRepository } from './currency.repository';
 
 @Injectable()
 export class CurrencyService {
-    constructor(private readonly currencyRepository: CurrencyRepository) {}
+  constructor(private readonly currencyRepository: CurrencyRepository) {}
 
-    getCurrencies() {
-        return this.currencyRepository.getCurrencies()
-    }
+  getCurrencies() {
+    return this.currencyRepository.getCurrencies();
+  }
 }

@@ -9,7 +9,6 @@ import { MarketplaceService } from './marketplace.service';
 
 @Controller('api/marketplace')
 export class MarketplaceController {
-  
   constructor(private readonly marketplaceService: MarketplaceService) {}
 
   @Get()
