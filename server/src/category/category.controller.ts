@@ -25,8 +25,9 @@ export class CategoryController {
     const hasCategoryByName = await this.categoryService.hasCategoryByName(
       categoryData.name,
     );
-    if (hasCategoryByName)
+    if (hasCategoryByName) {
       throw new BadRequestException('Category name already exists');
+    }
 
     await this.categoryService.createCategory(categoryData);
   }
