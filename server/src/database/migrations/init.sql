@@ -1,0 +1,34 @@
+CREATE TABLE IF NOT EXISTS categories (
+    id SERIAL PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    icon TEXT NOT NULL,
+    color TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS marketplaces (
+    id SERIAL PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    address TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS currencies (
+    id SERIAL PRIMARY KEY NOT NULL,
+    code TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS receipts (
+    id SERIAL PRIMARY KEY NOT NULL,
+    date TIMESTAMP NOT NULL,
+    currency_id INT NOT NULL REFERENCES currencies(id) ON DELETE RESTRICT,
+    marketplace_id INT NOT NULL REFERENCES marketplaces(id) ON DELETE RESTRICT,
+    category_id INT NOT NULL REFERENCES categories(id) ON DELETE RESTRICT
+);
+
+CREATE TABLE IF NOT EXISTS articles (
+    id SERIAL PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    unit_price DECIMAL(19, 4) NOT NULL,
+    amount DECIMAL(10, 3) NOT NULL,
+    receipt_id INT NOT NULL REFERENCES receipts(id) ON DELETE RESTRICT,
+    currency_id INT NOT NULL REFERENCES currencies(id) ON DELETE RESTRICT
+);
