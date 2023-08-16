@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { MarketplaceRepository } from './marketplace.repository';
 import { CreateMarketplaceDto } from './dto/create-marketplace.dto';
 
@@ -19,5 +19,13 @@ export class MarketplaceService {
       marketplaceName,
       marketplaceAddress,
     );
+  }
+
+  async checkMarketplaceAvailability(marketplaceId: number) {
+    const marketplace = await this.marketplaceRepository.getMarketplaceById(
+      marketplaceId,
+    );
+    if (!marketplace)
+      throw new BadRequestException('Invalid marketplace provided');
   }
 }

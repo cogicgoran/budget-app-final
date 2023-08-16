@@ -28,4 +28,14 @@ export class CategoryRepository {
       categoryData.icon,
     ]);
   }
+
+  async getCategoriesById(categoryIds: Set<number>) {
+    const idArray = Array.from(categoryIds);
+    const sqlPlaceholder = idArray
+      .map((_, index) => `$${index + 1}`)
+      .join(', ');
+    const sql = `SELECT (id) FROM categories WHERE id IN (${sqlPlaceholder})`;
+    const queryResult = await this.dbService.client.query(sql, idArray);
+    return queryResult.rows;
+  }
 }

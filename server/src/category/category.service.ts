@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CategoryRepository } from './category.repository';
 import { CreateCategoryDto } from './dto/create-category-dto';
 
@@ -16,5 +16,13 @@ export class CategoryService {
 
   createCategory(categoryData: CreateCategoryDto) {
     return this.categoryRepository.createCategory(categoryData);
+  }
+
+  async checkCategoryAvailability(categoryIds: Set<number>): Promise<void> {
+    const categories = await this.categoryRepository.getCategoriesById(
+      categoryIds,
+    );
+    if (categories.length !== categoryIds.size)
+      throw new BadRequestException('Invalid category provided');
   }
 }

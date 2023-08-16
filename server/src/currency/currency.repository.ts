@@ -12,6 +12,12 @@ export class CurrencyRepository {
     return queryResult.rows;
   }
 
+  async getCurrencyById(currencyId: number) {
+    const sql = `SELECT * FROM currencies WHERE id = $1`;
+    const queryResult = await this.dbService.client.query(sql, [currencyId]);
+    return queryResult.rows[0];
+  }
+
   async hasCurrencyByCode(currencyCode: string) {
     const sql = `SELECT * FROM currencies WHERE code = $1`;
     const queryResult = await this.dbService.client.query(sql, [currencyCode]);

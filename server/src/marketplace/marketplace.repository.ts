@@ -13,6 +13,12 @@ export class MarketplaceRepository {
     return queryResult.rows;
   }
 
+  async getMarketplaceById(marketplaceId: number) {
+    const sql = `SELECT * FROM marketplaces WHERE id = $1`;
+    const queryResult = await this.dbService.client.query(sql, [marketplaceId]);
+    return queryResult.rows[0];
+  }
+
   async createMarketplace(marketplaceData: CreateMarketplaceDto) {
     const sql = `INSERT INTO marketplaces(name, address) VALUES ($1, $2) RETURNING *`;
     const queryResult = await this.dbService.client.query(sql, [

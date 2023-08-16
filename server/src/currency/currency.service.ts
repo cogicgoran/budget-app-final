@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CurrencyRepository } from './currency.repository';
 import { CreateCurrencyDto } from './dto/create-currency-dto';
 
@@ -16,5 +16,10 @@ export class CurrencyService {
 
   createCurrency(currencyData: CreateCurrencyDto) {
     return this.currencyRepository.createCurrency(currencyData);
+  }
+
+  async checkCurrencyAvailability(currencyId: number): Promise<void> {
+    const currency = await this.currencyRepository.getCurrencyById(currencyId);
+    if (!currency) throw new BadRequestException('Invalid currency provided');
   }
 }

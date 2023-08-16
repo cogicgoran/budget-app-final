@@ -36,5 +36,6 @@ CREATE TABLE IF NOT EXISTS articles (
     unit_price DECIMAL(19, 4) NOT NULL,
     amount DECIMAL(10, 3) NOT NULL,
     receipt_id INT NOT NULL REFERENCES receipts(id) ON DELETE RESTRICT,
-    currency_id INT NOT NULL REFERENCES currencies(id) ON DELETE RESTRICT
+    currency_id INT NOT NULL REFERENCES currencies(id) ON DELETE RESTRICT,
+    category_id INT NOT NULL REFERENCES categories(id) ON DELETE RESTRICT
 );

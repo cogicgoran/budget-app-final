@@ -8,5 +8,6 @@ import { DatabaseModule } from 'src/database/database.module';
   imports: [DatabaseModule],
   providers: [CurrencyService, CurrencyRepository],
   controllers: [CurrencyController],
+  exports: [CurrencyService],
 })
 export class CurrencyModule {}

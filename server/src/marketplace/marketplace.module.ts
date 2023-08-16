@@ -8,5 +8,6 @@ import { DatabaseModule } from 'src/database/database.module';
   imports: [DatabaseModule],
   providers: [MarketplaceService, MarketplaceRepository],
   controllers: [MarketplaceController],
+  exports: [MarketplaceService],
 })
 export class MarketplaceModule {}
