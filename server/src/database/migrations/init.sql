@@ -1,3 +1,9 @@
+DROP TABLE categories CASCADE;
+DROP TABLE marketplaces CASCADE;
+DROP TABLE currencies CASCADE;
+DROP TABLE receipts CASCADE;
+DROP TABLE articles CASCADE;
+
 CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY NOT NULL,
     name TEXT NOT NULL,
@@ -8,7 +14,8 @@ CREATE TABLE IF NOT EXISTS categories (
 CREATE TABLE IF NOT EXISTS marketplaces (
     id SERIAL PRIMARY KEY NOT NULL,
     name TEXT NOT NULL,
-    address TEXT NOT NULL
+    address TEXT NOT NULL,
+    UNIQUE(name, address)
 );
 
 CREATE TABLE IF NOT EXISTS currencies (
