@@ -17,4 +17,10 @@ export class DatabaseService {
       }
     });
   }
+
+  createClient() {
+    return new Client({
+      connectionString: this.configService.getOrThrow('DATABASE_URL'),
+    });
+  }
 }

@@ -27,8 +27,7 @@ CREATE TABLE IF NOT EXISTS receipts (
     id SERIAL PRIMARY KEY NOT NULL,
     date TIMESTAMP NOT NULL,
     currency_id INT NOT NULL REFERENCES currencies(id) ON DELETE RESTRICT,
-    marketplace_id INT NOT NULL REFERENCES marketplaces(id) ON DELETE RESTRICT,
-    category_id INT NOT NULL REFERENCES categories(id) ON DELETE RESTRICT
+    marketplace_id INT NOT NULL REFERENCES marketplaces(id) ON DELETE RESTRICT
 );
 
 CREATE TABLE IF NOT EXISTS articles (

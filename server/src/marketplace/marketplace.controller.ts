@@ -6,6 +6,7 @@ import {
   NotFoundException,
   Post,
   UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { MarketplaceService } from './marketplace.service';
 import { CreateMarketplaceDto } from './dto/create-marketplace.dto';
@@ -20,7 +21,7 @@ export class MarketplaceController {
   }
 
   @Post()
-  @UsePipes()
+  @UsePipes(new ValidationPipe({ transform: true }))
   async createMarketplace(@Body() marketplaceData: CreateMarketplaceDto) {
     const hasExistingMarketplace = await this.marketplaceService.hasMarketplace(
       marketplaceData.name,
