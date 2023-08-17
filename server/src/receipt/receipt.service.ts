@@ -4,6 +4,7 @@ import { ReceiptRepository } from './receipt.repository';
 import { CategoryService } from 'src/category/category.service';
 import { CurrencyService } from 'src/currency/currency.service';
 import { MarketplaceService } from 'src/marketplace/marketplace.service';
+import { ReceiptHelper } from './receipt.helper';
 
 @Injectable()
 export class ReceiptService {
@@ -13,6 +14,20 @@ export class ReceiptService {
     private readonly currencyService: CurrencyService,
     private readonly marketplaceService: MarketplaceService,
   ) {}
+
+  async getReceiptById(receiptId: number) {
+    return this.receiptRepository.getReceiptById(receiptId);
+  }
+
+  getRecentReceipts() {
+    return this.receiptRepository.getRecentReceipts();
+  }
+
+  async getCurrentMonthSummary() {
+    const receipts = await this.receiptRepository.getCurrentMonthSummary();
+    const summary = ReceiptHelper.createSummary(receipts);
+    return summary;
+  }
 
   async createReceipt(receiptData: CreateReceiptDto) {
     const uniqueArticleCategoryIds = new Set(

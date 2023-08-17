@@ -6,6 +6,8 @@ import {
   UsePipes,
   ValidationPipe,
   Body,
+  Param,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { CreateReceiptDto } from './dto/create-receipt.dto';
 import { ReceiptService } from './receipt.service';
@@ -14,9 +16,22 @@ import { ReceiptService } from './receipt.service';
 export class ReceiptController {
   constructor(private readonly receiptService: ReceiptService) {}
 
-  @Get()
-  all() {
-    throw new NotFoundException('No receipts found');
+  @Get('recent-receipts')
+  async getRecentReceipts() {
+    return await this.receiptService.getRecentReceipts();
+  }
+
+  @Get('current-month-summary')
+  async getCurrentMonthSummary() {
+    return await this.receiptService.getCurrentMonthSummary();
+  }
+
+  @Get(':receiptId')
+  async getReceipt(@Param('receiptId', ParseIntPipe) receiptId: number) {
+    const receipt = await this.receiptService.getReceiptById(receiptId);
+    if (!receipt) throw new NotFoundException('No receipt found');
+
+    return receipt;
   }
 
   @Post()
