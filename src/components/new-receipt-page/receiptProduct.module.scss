@@ -1,0 +1,11 @@
+.receipt-product-icon {
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0.3em;
+  transition: background-color 200ms;
+  border-radius: 50%;
+
+  :hover {
+    background-color: #90c3d0;
+  }
+}

@@ -1,46 +1,87 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { firebaseAuthService } from "./config/firebase";
+import { ToastContainer } from "react-toastify";
+import PageLoader from "./components/UI/loader/full-page-loader/PageLoader";
+import AppLayout from "./components/UI/layout/AppLayout";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { router } from "./router";
+import "./styles/globals.scss";
+import "./styles/fonts.scss";
+import "./styles/swiper.scss";
+import "./styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
+import "react-tooltip/dist/react-tooltip.css";
+import DashboardPage from "./components/dashboard/DashboardPage";
+import AuthenticationPage from "./components/auth/AuthenticationPage";
+import { PATHS } from "./utils/constants";
+import NewReceiptPage from "./components/new-receipt-page/NewReceiptPage";
+import ViewReceiptsPage from "./components/view-receipts/ViewReceiptsPage";
+import MarketplacePage from "./components/marketplaces/MarketplacesPage";
+import CategoryPage from "./components/category/CategoriesPage";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [user, loading, error] = useAuthState(firebaseAuthService);
+  const [isAppInitialized, setIsAppInitialized] = useState(false);
+  const [showApp, setShowApp] = useState(false);
+  // const navigate = useNavigate()
 
-  async function fetchHello() {
-    try {
-      const response = await fetch('/api');
-      const data = await response.json();
-      setCount(data);
-    } catch (error) {
-      alert(JSON.stringify(error, null, 2));
+  useEffect(() => {
+    if (!showApp) return;
+    if (!user) router.navigate("/auth");
+  }, [user]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsAppInitialized(true);
+    }, 1250);
+  }, []);
+
+  async function handleLoaderHiding() {
+    if (!user) {
+      await router.navigate("/auth");
     }
+    setShowApp(true);
+  }
+
+  if (error) {
+    return <div>ERROR</div>;
   }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-        <button onClick={fetchHello}>Boost count</button>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <ToastContainer position="bottom-right" autoClose={3000} />
+        {!showApp && (
+          <PageLoader
+            showLoader={!isAppInitialized || loading}
+            onLoaderHidden={handleLoaderHiding}
+          />
+        )}
+        {showApp && (
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" Component={AppLayout}>
+                <Route path={PATHS.AUTH} Component={AuthenticationPage} />
+                <Route path={PATHS.DASHBOARD} Component={DashboardPage} />
+                <Route path={PATHS.NEW_RECEIPTS} Component={NewReceiptPage} />
+                <Route
+                  path={PATHS.VIEW_RECEIPTS}
+                  Component={ViewReceiptsPage}
+                />
+                <Route path={PATHS.MARKETPLACES} Component={MarketplacePage} />
+                <Route path={PATHS.CATEGORIES} Component={CategoryPage} />
+                <Route path="/edit-receipt/*" Component={NewReceiptPage} />
+                <Route path="*" element={<Navigate to="/dashboard" />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        )}
+      </LocalizationProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

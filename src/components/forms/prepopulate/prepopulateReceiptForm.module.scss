@@ -1,0 +1,12 @@
+.prepopulateReceiptModal {
+  position: absolute;
+  left: 50%;
+  top: 128px;
+  transform: translateX(-50%);
+  z-index: 11;
+  overflow: hidden;
+  
+  background-color: white;
+  width: max-content;
+  height: max-content;
+}

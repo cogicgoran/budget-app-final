@@ -1,0 +1,60 @@
+.new-marketplace {
+  position: fixed;
+  top: 20%;
+  left: calc(50% - 200px);
+  width: 400px;
+  padding: 1em;
+  background-color: white;
+  color: #1a4e5b;
+  z-index: 11;
+  font-size: 0.9em;
+}
+
+.new-marketplace h3 {
+  margin: 0 auto;
+  margin-bottom: 1em;
+  text-align: center;
+  color: #0a1f24;
+}
+
+.new-marketplace input::placeholder {
+  font-style: italic;
+  color: #90c3d0;
+}
+
+.new-marketplace-input {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 8em 12em;
+  margin-bottom: 0.2em;
+}
+
+.new-marketplace-input input {
+  padding: 0.1em 0.2em;
+  border: 1px solid #90c3d0;
+}
+
+.new-marketplace__controls {
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  gap: 4em;
+  font-size: 0.6em;
+}
+
+.new-marketplace__controls button {
+  min-width: 16ch;
+  padding: 0.3em 2em;
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+.new-marketplace__confirm-btn {
+  background-color: #60a917;
+  border: 1px solid #2d7600;
+}
+
+.new-marketplace__cancel-btn {
+  background-color: #fad9d5;
+  border: 1px solid #ae4132;
+}

@@ -1,0 +1,12 @@
+.categorySmall {
+  padding: 0.2em 1em;
+  border-radius: 1em;
+  font-size: 0.8em;
+  background-color: gray;
+  border: 1px solid rgb(100, 93, 93);
+  color: white;
+
+  > svg {
+    margin-right: 0.4rem;
+  }
+}

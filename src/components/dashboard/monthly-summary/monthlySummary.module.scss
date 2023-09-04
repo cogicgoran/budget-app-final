@@ -1,0 +1,43 @@
+.dashboardCurrentMonth {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 2em 3em;
+    font-size: 1.2em;
+}
+
+.dashboardCurrentMonthHeader {
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.dashboardCurrentMonthTotal {
+    color: #660000;
+    margin-right: 4em;
+}
+
+.dashboardCurrentMonthCategories {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.6em;
+}
+
+.dashboardCurrentMonthCategory {
+    display: grid;
+    grid-template-columns: 5em 6em;
+    column-gap: 0.2em;
+    text-align: right;
+    align-items: center;
+    margin-bottom: 0.2em;
+
+    :last-of-type {
+        margin-bottom: unset;
+    }
+
+    span {
+        justify-self: right;
+        width: fit-content;
+    }
+
+
+}

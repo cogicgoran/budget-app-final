@@ -1,0 +1,37 @@
+export interface LanguageDictionary {
+  add: string;
+  addCategory: string;
+  addNew: string;
+  addProduct: string;
+  alreadyHaveAnAccount: string;
+  amount: string;
+  cancel: string;
+  categories: string;
+  category: string;
+  choose: string;
+  currency: string;
+  currentMonth: string;
+  date: string;
+  dontHaveAnAccount: string;
+  email: string;
+  finish: string;
+  logout: string;
+  marketplace: string;
+  name: string;
+  newReceipt: string;
+  noReceipts: string;
+  or: string;
+  password: string;
+  price: string;
+  productName: string;
+  recentReceipts: string;
+  seeMore: string;
+  shopAddress: string;
+  shopName: string;
+  signIn: string;
+  signInHere: string;
+  signInWith: string;
+  signUp: string;
+  signUpHere: string;
+  typeHere: string;
+}

@@ -1,0 +1,36 @@
+.new-receipt {
+  padding: 0 30px 20px 30px;
+  background-color: #f5fdff;
+  color: #1a4e5b;
+}
+
+// .new-receipt input::placeholder {
+//   font-style: italic;
+//   color: #90c3d0;
+// }
+
+// .new-receipt input,
+// .new-receipt select {
+//   border: 1px solid #90c3d0;
+// }
+
+.new-receipt__add-product {
+  margin-top: 1em;
+  padding: 0.3em 1em;
+  background-color: #b1ddf0;
+  border: 1px solid #10739e;
+}
+
+.new-receipt-finish-btn {
+  padding: 0.3em 2.5em;
+  border: 1px solid #2d7600;
+  color: white;
+  background-color: #60a917;
+}
+
+.new-receipt__add-product,
+.new-receipt-finish-btn {
+  border-radius: 1em;
+  font-size: 10px;
+  text-transform: uppercase;
+}

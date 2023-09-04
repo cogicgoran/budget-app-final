@@ -1,0 +1,60 @@
+.displayUserLogged {
+  position: absolute;
+  top: 40px;
+  right: 16px;
+  padding: 0.2rem;
+  z-index: 3;
+  cursor: default;
+}
+
+.userDropdownLabel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.2rem;
+  color: #1a4e5b;
+  cursor: pointer;
+
+  svg:nth-child(1) {
+    width: 32px;
+  }
+
+  svg:nth-child(2) {
+    width: 12px;
+  }
+}
+
+.displayUserDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  border: 1px solid #90c3d0;
+  padding: 0.2rem 0.1rem;
+  border-radius: 0.2rem;
+  width: 130px;
+  background-color: white;
+  color: #1a4e5b;
+  font-size: 0.8rem;
+  display: block;
+}
+
+.displayUserDropdown {
+  > * {
+    padding: 0 0.2rem;
+    cursor: pointer;
+  }
+
+  > *:hover {
+    background-color: #e0f9ff;
+  }
+}
+
+.dropdownBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  cursor: default;
+}

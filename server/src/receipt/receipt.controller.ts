@@ -18,7 +18,10 @@ export class ReceiptController {
 
   @Get('recent-receipts')
   async getRecentReceipts() {
-    return await this.receiptService.getRecentReceipts();
+    const receipts = await this.receiptService.getRecentReceipts();
+    const recentReceipts = this.receiptService.buildReceiptsReport(receipts);
+    const recentCategories = this.receiptService.buildRecentCategoriesReport(receipts);
+    return {recentReceipts, recentCategories}
   }
 
   @Get('current-month-summary')

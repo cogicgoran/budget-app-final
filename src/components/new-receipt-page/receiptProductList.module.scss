@@ -1,0 +1,60 @@
+.new-receipt-table {
+  margin-top: 30px;
+  // width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.new-receipt-table th,
+.new-receipt-table td {
+  border: 1px solid #90c3d0;
+  font-size: 14px;
+}
+
+.new-receipt-table th {
+  padding: 0.2em;
+  text-align: center;
+  font-weight: 400;
+  background-color: white;
+}
+
+.new-receipt-table tr {
+  padding-right: 20px;
+}
+
+.new-receipt-table td {
+  background-color: white;
+}
+
+.new-receipt-table td:nth-of-type(2) {
+  width: 25%;
+}
+
+.new-receipt-table td:nth-of-type(2) span {
+  padding: 0 1em;
+  border-radius: 1em;
+  font-size: 10px;
+  background-color: #bac8d3;
+  border: 1px solid rgb(100, 93, 93);
+  text-align: right;
+  min-width: 8ch;
+  text-transform: uppercase;
+}
+
+.new-receipt-table td:nth-of-type(3) {
+  width: 25%;
+  text-align: right;
+}
+
+.new-receipt-table td:nth-of-type(4) {
+  width: 24px;
+}
+
+.new-receipt-total {
+  margin-top: 1em;
+  margin-bottom: -1em;
+  display: block;
+  text-align: right;
+  font-size: 16px;
+  color: #660000;
+}

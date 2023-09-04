@@ -1,0 +1,169 @@
+.addCategoryContainer {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  z-index: 11;
+}
+
+.categoryColorSelect .categoryShowcase {
+  cursor: pointer;
+}
+
+.categoryColorSelect {
+  margin-bottom: 40px;
+  padding: 1rem;
+  background-color: #f5fdff;
+}
+
+.addCategoryControls {
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  gap: 4em;
+  font-size: 10px;
+}
+
+.addCategoryControls button {
+  text-transform: uppercase;
+  padding: 0.3em 1em;
+  min-width: 16ch;
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+.addCategoryCancel {
+  background-color: #fad9d5;
+  border: 1px solid #ae4132;
+}
+
+.addCategoryConfirm {
+  background-color: #60a917;
+  border: 1px solid #2d7600;
+}
+
+.addCategoryTitle {
+  color: #1a4e5b;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.categoryShowcaseImage svg {
+  fill: currentColor;
+  max-width: 60px;
+  max-height: 60px;
+  height: 60px;
+  width: 60px;
+}
+
+.categoryShowcaseImageDashboard svg {
+  max-width: 32px;
+  max-height: 32px;
+  height: 32px;
+  width: 32px;
+}
+
+// .tooltipText {
+//   position: absolute;
+//   display: flex;
+//   height: fit-content;
+//   left: 0 - 25%;
+//   top: 100%;
+//   visibility: hidden;
+//   background-color: #222;
+//   text-align: center;
+//   padding: 5px 3px;
+//   border-radius: 6px;
+//   bottom: 100%;
+//   z-index: 5;
+// }
+
+
+
+.addCategoryTitle {
+  color: #1a4e5b;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.swiperColorWraper {
+  margin: auto;
+  width: 198px;
+
+  .colorPickerItem {
+    height: 64px;
+  }
+}
+
+.colorPickerActiveSlide {
+  position: relative;
+  outline-style: solid;
+  outline-width: 4px;
+  outline-color: black;
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.sliderColorArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(calc(-50% + 2px));
+  cursor: pointer;
+
+  svg {
+    cursor: pointer;
+    height: 24px;
+  }
+}
+
+.sliderColorPrev {
+  left: 104px;
+}
+
+.sliderColorNext {
+  right: 104px;
+}
+
+.swiperIconWrapper {
+  text-align: center;
+  margin: auto;
+  width: 384px;
+  height: 128px;
+}
+
+.iconPickerSlide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 200ms;
+
+  svg {
+    fill: currentColor;
+    height: 20px;
+  }
+}
+
+.sliderIconArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(calc(-50% + 2px));
+  cursor: pointer;
+
+  svg {
+    cursor: pointer;
+    height: 24px;
+  }
+}
+
+.sliderIconPrev {
+  left: 0;
+}
+
+.sliderIconNext {
+  right: 0;
+}

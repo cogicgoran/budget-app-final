@@ -37,12 +37,17 @@ export class ReceiptRepository {
         };
         receipt.date = article.date;
         receipt.articles = [];
+        receipt.id = article.receipt_id
       }
       receipt.articles.push({
         id: article.article_id,
         name: article.article_name,
         unitPrice: parseFloat(article.article_unit_price),
         amount: parseFloat(article.article_amount),
+        category: {
+          id: article.category_id,
+          name: article.category_name,
+        }
       });
     });
     return receipt;
@@ -101,7 +106,12 @@ export class ReceiptRepository {
 
   async getRecentReceipts() {
     const sql = `
-        SELECT * 
+        SELECT 
+          r.id AS receipt_id, r.date as date,
+          cu.id AS currency_id, cu.code AS currency_code,
+          m.id AS marketplace_id, m.name AS marketplace_name, m.address AS marketplace_address,
+          a.id AS article_id, a.unit_price AS unit_price, a.amount AS amount,
+          ca.id AS category_id, ca.name AS category_name, ca.icon AS category_icon, ca.color AS category_color
         FROM (
             SELECT *
             FROM receipts
@@ -141,8 +151,8 @@ export class ReceiptRepository {
           color: row.category_color,
           icon: row.category_icon,
         },
-        unitPrice: parseFloat(row.article_unit_price),
-        amount: parseFloat(row.article_amount),
+        unitPrice: parseFloat(row.unit_price),
+        amount: parseFloat(row.amount),
       });
     });
     return receipts;

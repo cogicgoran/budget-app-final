@@ -1,0 +1,86 @@
+.formContainer {
+  margin: 0 auto;
+  padding: 16px 0;
+  width: 332px;
+  text-align: center;
+  color: black;
+  font-size: 0.9rem;
+
+  form {
+    margin: 1rem auto;
+    border-radius: 1em;
+  }
+
+  form button {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.3em 1em;
+    border: 1px solid #90c3d0;
+  }
+
+  button {
+    transition: background-color 200ms;
+    cursor: pointer;
+    border-radius: 0.3rem;
+  }
+
+  button:hover {
+    background-color: #90c3d0;
+  }
+}
+
+.formInputWrapper {
+  input {
+    margin: 4px 0;
+    padding: 0.1em 0.2em;
+    border: 1px solid #90c3d0;
+    width: 100%;
+    color: #1a4e5b;
+  }
+
+  input::placeholder {
+    font-style: italic;
+    color: #90c3d0;
+  }
+}
+
+.formInputWrapper.invalid {
+  input {
+    border-color: red;
+  }
+
+  label {
+    color: red;
+  }
+}
+
+.formControls button {
+  padding: 0.3em 1em;
+  min-width: 16ch;
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+.loginServiceWrapper {
+  margin: 1rem 0;
+}
+
+.loginServiceBtn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0.2rem 0;
+  padding: 0.3em 1.5em;
+  border-radius: 0.3rem;
+  border: 1px solid #90c3d0;
+
+  > *:nth-child(2) {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  svg {
+    width: 26px;
+    height: 26px;
+  }
+}
