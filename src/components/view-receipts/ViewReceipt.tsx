@@ -38,7 +38,6 @@ export default function ViewReceipt({ onDelete }: Props) {
         const data = await getReceipt(viewReceiptId!, abortController);
         setReceipt(data);
       } catch (error) {
-        console.log(error);
         toast.error("Failed to retrieve a receipt");
       }
     })();
@@ -86,7 +85,6 @@ export default function ViewReceipt({ onDelete }: Props) {
                   setViewReceiptId(undefined);
                   toast.success("Receipt deleted");
                 } catch (error) {
-                  console.log(error);
                   toast.error(getResponseErrorMessage(error));
                 }
               })();

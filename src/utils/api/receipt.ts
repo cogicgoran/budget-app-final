@@ -8,7 +8,6 @@ export async function getMonthlyReport(): Promise<{
   }[];
   total: number;
 }> {
-  console.log("test");
   const url = `${import.meta.env.VITE_API_URL}/receipt/current-month-summary`;
   const response = await axios.get(url);
   return response.data;

@@ -49,7 +49,6 @@ function PrepopulateReceiptForm({ onDataRetrieved }: Props) {
         qrbox={420}
         disableFlip={false}
         qrCodeSuccessCallback={onNewScanResult}
-        qrCodeErrorCallback={(err) => console.log(err)}
       />
     </div>
   );

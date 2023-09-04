@@ -105,7 +105,6 @@ function ViewReceiptsPage() {
             <div className={classNames("flex justify-end items-center")}>
               <span
                 onClick={() => {
-                  console.log(value.id);
                   setViewReceiptId(value.id);
                 }}
                 className={classNames(
@@ -139,7 +138,6 @@ function ViewReceiptsPage() {
                       handleDelete(value.id);
                       toast.success("Receipt deleted");
                     } catch (error) {
-                      console.log(error);
                       toast.error(getResponseErrorMessage(error));
                     }
                   })();

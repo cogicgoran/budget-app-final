@@ -78,7 +78,6 @@ function ReceiptForm({ isSubmitting, submitHandler }: Props) {
   }
 
   function handleDataPopulation(data: PrepopulateReceiptResponse) {
-    console.log(data);
     formMethods.setValue(
       "articles",
       data.articles.map((dataItem) => {

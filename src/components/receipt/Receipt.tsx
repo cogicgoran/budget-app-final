@@ -82,8 +82,7 @@ function Receipt(props: Props) {
                 props.onDelete(props.id);
                 toast.success("Receipt deleted");
               } catch (error) {
-                console.log(error);
-                toast.error("Failed to deleted receip");
+                toast.error("Failed to deleted receipt");
               }
             })();
           }}

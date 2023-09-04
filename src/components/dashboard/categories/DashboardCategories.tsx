@@ -17,7 +17,7 @@ function DashboardCategories({ categories, isLoading }: Props) {
   const { t } = useTranslation();
   const textCategories = t("categories");
   const textSeeMore = t("seeMore");
-  console.log(categories);
+
   return (
     <div className={cn("min-h-[100px] px-4 py-6 bg-white")}>
       <h2

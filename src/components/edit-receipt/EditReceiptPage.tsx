@@ -71,7 +71,6 @@ const EditReceiptPage = () => {
     (async function fetchReceipt() {
       try {
         const data = await getReceipt(receiptId, abortController);
-        console.log(data);
         if (data.receipt) {
           formMethods.reset(
             {
