@@ -14,9 +14,7 @@ export async function getMonthlyReport(): Promise<{
   return response.data;
 }
 
-export async function getReceiptsView(): Promise<{
-  items: any[];
-}> {
+export async function getReceiptsView(): Promise<Array<any>> {
   const url = `${import.meta.env.VITE_API_URL}/receipt/view`;
   const response = await axios.get(url);
   return response.data;

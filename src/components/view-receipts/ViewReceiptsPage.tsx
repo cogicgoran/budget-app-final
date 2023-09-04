@@ -32,8 +32,8 @@ function ViewReceiptsPage() {
   useEffect(() => {
     async function fetchReceipts() {
       try {
-        const data = await getReceiptsView();
-        setReceipts(data.items);
+        const receipts = await getReceiptsView();
+        setReceipts(receipts);
       } catch (error) {}
     }
 
@@ -116,18 +116,15 @@ function ViewReceiptsPage() {
               >
                 <IconEye className={classNames("w-[20px] h-[20px]")} />
               </span>
-              <Link to={PATHS.EDIT_RECEIPTS + "/" + value.id}>
-                <a
-                  className={classNames(
-                    "p-[6px]",
-                    "transition-colors cursor-pointer rounded-[50%]",
-                    "hover:bg-[#90c3d0] hover:text-[grey]",
-                  )}
-                >
-                  <IconPenToSquare
-                    className={classNames("w-[20px] h-[20px]")}
-                  />
-                </a>
+              <Link
+                to={PATHS.EDIT_RECEIPTS + "/" + value.id}
+                className={classNames(
+                  "p-[6px]",
+                  "transition-colors cursor-pointer rounded-[50%]",
+                  "hover:bg-[#90c3d0] hover:text-[grey]",
+                )}
+              >
+                <IconPenToSquare className={classNames("w-[20px] h-[20px]")} />
               </Link>
               <span
                 className={classNames(

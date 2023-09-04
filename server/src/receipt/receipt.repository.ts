@@ -37,7 +37,7 @@ export class ReceiptRepository {
         };
         receipt.date = article.date;
         receipt.articles = [];
-        receipt.id = article.receipt_id
+        receipt.id = article.receipt_id;
       }
       receipt.articles.push({
         id: article.article_id,
@@ -47,7 +47,7 @@ export class ReceiptRepository {
         category: {
           id: article.category_id,
           name: article.category_name,
-        }
+        },
       });
     });
     return receipt;
@@ -117,6 +117,59 @@ export class ReceiptRepository {
             FROM receipts
             ORDER BY date DESC
             LIMIT 5) as r
+        INNER JOIN articles a ON a.receipt_id = r.id
+        INNER JOIN marketplaces m ON m.id = r.marketplace_id
+        INNER JOIN currencies cu ON cu.id = r.currency_id
+        INNER JOIN categories ca ON ca.id = a.category_id
+        `;
+    const queryResult = await this.dbService.client.query(sql);
+    const receipts = [];
+    queryResult.rows.forEach((row) => {
+      let receipt = receipts.find((receipt) => receipt.id === row.receipt_id);
+      if (!receipt) {
+        receipt = {
+          id: row.receipt_id,
+          currency: {
+            id: row.currency_id,
+            code: row.currency_code,
+          },
+          marketplace: {
+            id: row.marketplace_id,
+            name: row.marketplace_name,
+            address: row.marketplace_address,
+          },
+          date: row.date,
+          articles: [],
+        };
+        receipts.push(receipt);
+      }
+      receipt.articles.push({
+        id: row.article_id,
+        category: {
+          id: row.category_id,
+          name: row.category_name,
+          color: row.category_color,
+          icon: row.category_icon,
+        },
+        unitPrice: parseFloat(row.unit_price),
+        amount: parseFloat(row.amount),
+      });
+    });
+    return receipts;
+  }
+
+  async getAllReceipts() {
+    const sql = `
+        SELECT 
+          r.id AS receipt_id, r.date as date,
+          cu.id AS currency_id, cu.code AS currency_code,
+          m.id AS marketplace_id, m.name AS marketplace_name, m.address AS marketplace_address,
+          a.id AS article_id, a.unit_price AS unit_price, a.amount AS amount,
+          ca.id AS category_id, ca.name AS category_name, ca.icon AS category_icon, ca.color AS category_color
+        FROM (
+            SELECT *
+            FROM receipts
+            ORDER BY date DESC) as r
         INNER JOIN articles a ON a.receipt_id = r.id
         INNER JOIN marketplaces m ON m.id = r.marketplace_id
         INNER JOIN currencies cu ON cu.id = r.currency_id

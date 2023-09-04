@@ -20,13 +20,21 @@ export class ReceiptController {
   async getRecentReceipts() {
     const receipts = await this.receiptService.getRecentReceipts();
     const recentReceipts = this.receiptService.buildReceiptsReport(receipts);
-    const recentCategories = this.receiptService.buildRecentCategoriesReport(receipts);
-    return {recentReceipts, recentCategories}
+    const recentCategories =
+      this.receiptService.buildRecentCategoriesReport(receipts);
+    return { recentReceipts, recentCategories };
   }
 
   @Get('current-month-summary')
   async getCurrentMonthSummary() {
     return await this.receiptService.getCurrentMonthSummary();
+  }
+
+  @Get('view')
+  async getAllReceipts() {
+    const receipts = await this.receiptService.getAllReceipts();
+    const receiptsReport = this.receiptService.buildReceiptsReport(receipts);
+    return receiptsReport;
   }
 
   @Get(':receiptId')
