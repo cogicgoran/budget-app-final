@@ -17,6 +17,7 @@ export const frenchDictionary: LanguageDictionary = {
   dontHaveAnAccount: "Vous n'avez pas de compte?",
   email: "Email",
   finish: "Finir",
+  language: "Langue",
   logout: "Se déconnecter",
   marketplace: "Marché",
   name: "Nom",

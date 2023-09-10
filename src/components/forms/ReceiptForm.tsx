@@ -174,7 +174,7 @@ export function createReceiptPayload(formData: {
     articles: formData.articles.map((article) => ({
       id: article.id,
       name: article.name,
-      category: article.category,
+      categoryId: article.category,
       unitPrice: article.price,
       amount: article.amount,
     })),

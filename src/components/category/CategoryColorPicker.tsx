@@ -74,16 +74,18 @@ function CategoryColorPicker({ onCancel, onSubmit }: Props) {
   return (
     <div className={classNames(styles.categoryColorSelect, "colorPicker")}>
       <h3 className={styles.addCategoryTitle}>{textAddCategory}</h3>
-      <CategoryShowcase
-        colorScheme={colorScheme}
-        icon={iconData.icon}
-        name={categoryName}
-        onShowcaseClick={() => setShowIconPicker((prevState) => !prevState)}
-        onClick={(e: any) => e.stopPropagation()}
-        onChange={(e: any) => setCategoryName(e.target.value)}
-        readonly={false}
-        showcasePlaceholder={textTypeHere}
-      />
+      <div className="flex justify-center">
+        <CategoryShowcase
+          colorScheme={colorScheme}
+          icon={iconData.icon}
+          name={categoryName}
+          onShowcaseClick={() => setShowIconPicker((prevState) => !prevState)}
+          onClick={(e: any) => e.stopPropagation()}
+          onChange={(e: any) => setCategoryName(e.target.value)}
+          readonly={false}
+          showcasePlaceholder={textTypeHere}
+        />
+      </div>
 
       <div style={{ position: "relative" }}>
         <Swiper

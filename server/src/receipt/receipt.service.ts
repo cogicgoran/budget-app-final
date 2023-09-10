@@ -13,7 +13,7 @@ export class ReceiptService {
     private readonly categoryService: CategoryService,
     private readonly currencyService: CurrencyService,
     private readonly marketplaceService: MarketplaceService,
-  ) {}
+  ) { }
 
   async getReceiptById(receiptId: number) {
     return this.receiptRepository.getReceiptById(receiptId);
@@ -68,7 +68,7 @@ export class ReceiptService {
       categoryPrices.set(
         article.category.id,
         (categoryPrices.get(article.category.id) ?? 0) +
-          article.unitPrice * article.amount,
+        article.unitPrice * article.amount,
       );
     });
     const maxObj = { id: null, value: -1 };
@@ -90,6 +90,7 @@ export class ReceiptService {
       .reverse()
       .forEach((receipt) => {
         receipt.articles.some((article) => {
+          if (recentCategories.size === 5) return;
           if (!recentCategories.has(article.category.name)) {
             recentCategories.set(article.category.name, article.category);
           }

@@ -27,7 +27,7 @@ function CategoryPill({ children, iconName, mainColor }: Props) {
       )}
     >
       {getIconByName(iconName)?.icon()}
-      <span className="max-w-[10ch] overflow-hidden text-ellipsis">
+      <span className="max-w-[10ch] overflow-hidden text-ellipsis whitespace-nowrap">
         {children}
       </span>
     </span>

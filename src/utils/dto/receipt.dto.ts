@@ -13,7 +13,9 @@ export const ReceiptDto = z.object({
         unitPrice: z
           .number({ invalid_type_error: "Invalid article price" })
           .nonnegative("Invalid article price"),
-        category: z.number({ invalid_type_error: "Invalid article category" }),
+        categoryId: z.number({
+          invalid_type_error: "Invalid article category",
+        }),
       }),
       { invalid_type_error: "Invalid receipt" },
     )

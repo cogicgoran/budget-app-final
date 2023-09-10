@@ -45,12 +45,12 @@ function CategoryShowcase({
     <div
       style={{ borderColor: colorScheme.borderColor }}
       className={cn(
-        "w-[100px]",
         "border-2 border-solid rounded-t-2xl",
-        "my-[12px] mx-auto",
+        "my-[12px] mx-0",
         { "absolute top-2 left-1/2 translate-x-[-50%]": isSliderOverlay },
         {
           "w-[72px]": isDashboard,
+          "w-[100px]": !isDashboard,
         },
         className,
       )}
@@ -60,10 +60,10 @@ function CategoryShowcase({
         style={{ color: colorScheme.color }}
         className={cn(
           "flex justify-center items-center",
-          "h-[80px]",
           styles.categoryShowcaseImage,
           {
             "h-[48px]": isDashboard,
+            "h-[80px]": !isDashboard,
             [styles.categoryShowcaseImageDashboard]: isDashboard,
           },
         )}
@@ -74,10 +74,11 @@ function CategoryShowcase({
         className={cn(
           "block w-full border-0 border-t-2 border-solid",
           "text-center uppercase text-ellipsis whitespace-nowrap",
-          "text-[14px] text-white",
+          "text-white",
           "focus:outline-0",
           {
             "text-[11px]": isDashboard,
+            "text-[14px]": !isDashboard,
           },
         )}
         style={{

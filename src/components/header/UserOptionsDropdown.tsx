@@ -1,17 +1,20 @@
 import React, { MouseEvent, useState } from "react";
-import { useSignOut } from "react-firebase-hooks/auth";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { useTranslation } from "react-i18next";
 import { IconChevronDown } from "../icons/ChevronDown";
 import { IconCircleUser } from "../icons/CircleUser";
 import styles from "./userLoggedDisplay.module.scss";
 import { firebaseAuthService } from "../../config/firebase";
+import Language from "../language/Language";
 
 const UserOptionDropdown: React.FC = () => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [user] = useAuthState(firebaseAuthService);
   const { t } = useTranslation();
   const [signOut, loading, error] = useSignOut(firebaseAuthService);
 
   const textLogout = t("logout");
+  const textLanguage = t("language");
 
   async function handleLogout() {
     try {
@@ -39,9 +42,15 @@ const UserOptionDropdown: React.FC = () => {
           <IconChevronDown key="arrowDown" />
         </div>
         {showDropdown && (
-          <div className={styles.displayUserDropdown}>
-            <div onClick={handleLogout}>{textLogout}</div>
-          </div>
+          <>
+            <div className={styles.displayUserDropdown}>
+              {!!user && <div onClick={handleLogout}>{textLogout}</div>}
+              <div>
+                {textLanguage}
+                <Language />
+              </div>
+            </div>
+          </>
         )}
       </div>
       {showDropdown && (

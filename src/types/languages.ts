@@ -15,6 +15,7 @@ export interface LanguageDictionary {
   dontHaveAnAccount: string;
   email: string;
   finish: string;
+  language: string;
   logout: string;
   marketplace: string;
   name: string;
