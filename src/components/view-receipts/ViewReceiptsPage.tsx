@@ -168,7 +168,7 @@ function ViewReceiptsPage() {
     <div>
       <table
         {...getTableProps({
-          className: classNames("border-spacing-[4px] border-separate"),
+          className: classNames("border-spacing-[4px] border-separate m-auto"),
         })}
       >
         <thead>
